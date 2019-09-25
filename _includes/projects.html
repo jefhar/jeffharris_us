@@ -3,7 +3,11 @@
     <li>
         <a href="{{ site.baseurl }}{{ project.url }}">
             <img src="{{ project.image }}">
-            <h2>{{ project.title }} <small>{{ project.lang }}</small></h2>
+            <h2>{{ project.title }} <small>
+                {% for tag in project.tags %}}
+                {{ tag }}
+                {{ % endfor %}}
+            </small></h2>
         </a>
     </li>
     {% endfor %}
