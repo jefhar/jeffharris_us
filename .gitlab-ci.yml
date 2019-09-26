@@ -12,10 +12,13 @@ test:
   script:
   - bundle install --path vendor/bundle
   - bundle exec jekyll build -d test
+  cache:
+    key: ${CI_PROJECT_PATH}
+    paths:
+      - /vendor/bundle
   artifacts:
     paths:
     - test
-    - vendor/bundle
   except:
   - master
 
@@ -24,6 +27,10 @@ pages:
   script:
   - bundle install --path vendor/bundle
   - bundle exec jekyll build -d public
+  cache:
+    key: ${CI_PROJECT_PATH}
+    paths:
+      - /vendor/bundle
   artifacts:
     paths:
     - public
