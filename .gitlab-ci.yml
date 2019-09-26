@@ -10,19 +10,23 @@ before_script:
 test:
   stage: test
   script:
+  - bundle install --path vendor/bundle
   - bundle exec jekyll build -d test
   artifacts:
     paths:
     - test
+    - vendor/bundle
   except:
   - master
 
 pages:
   stage: deploy
   script:
+  - bundle install --path vendor/bundle
   - bundle exec jekyll build -d public
   artifacts:
     paths:
     - public
+    - vendor/bundle
   only:
   - master

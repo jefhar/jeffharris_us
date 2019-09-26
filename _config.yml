@@ -18,16 +18,17 @@ twitter_username: jefhar70
 github_username:  jefhar
 gitlab_username:  jefhar
 timezone: America/Los_Angeles
+source: app
 
 # Outputting
 permalink: pretty
 
 # Build settings
 markdown: kramdown
-exclude: ["README.md", "Gemfile", "Gemfile.lock"]
+exclude: ["README.md", "Gemfile", "Gemfile.lock", "Makefile", ".idea/"]
 
 # Collections
-collection:
+collections:
   projects:
     output: true
-    permalink: /projects/:path
+    permalink: /projects/:title/

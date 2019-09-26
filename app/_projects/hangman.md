@@ -5,7 +5,8 @@ date: September 25, 2019
 image: https://picsum.photos/400?random=1
 tags: Java
 ---
-You can find the source code for Jekyll at
+
+You can find the source code for Hangman at
 {% include icon-github.html username=site.github_username %}
 [hangman](https://github.com/jefhar/hangman-java)
 

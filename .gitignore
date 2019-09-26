@@ -2,8 +2,6 @@ _site
 .sass-cache
 .jekyll-metadata
 public/
-.idea/.gitignore
-.idea/jekyll.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
+.idea/
+vendor/
+.jekyll-cache
