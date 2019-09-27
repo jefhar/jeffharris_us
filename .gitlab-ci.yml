@@ -5,17 +5,16 @@ variables:
   LC_ALL: C.UTF-8
 
 before_script:
-  - bundle install
+  - bundle install --path vendor/bundle
 
 test:
   stage: test
   script:
-  - bundle install --path vendor/bundle
   - bundle exec jekyll build -d test
   cache:
     key: ${CI_PROJECT_PATH}
     paths:
-      - /vendor/bundle
+      - vendor/bundle
   artifacts:
     paths:
     - test
@@ -25,15 +24,13 @@ test:
 pages:
   stage: deploy
   script:
-  - bundle install --path vendor/bundle
   - bundle exec jekyll build -d public
   cache:
     key: ${CI_PROJECT_PATH}
     paths:
-      - /vendor/bundle
+      - vendor/bundle
   artifacts:
     paths:
     - public
-    - vendor/bundle
   only:
   - master
