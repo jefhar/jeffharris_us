@@ -10,11 +10,11 @@ title: Portfolio of Jeffrey Harris
 subtitle: At GitLab - subtitle
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : https://picsum.photos/88?random=1 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : The Masthead # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : " " # The Masthead # overrides the website title displayed in the masthead, use " " for no title
 description: > # this means to ignore newlines until "baseurl:"
   A curated list of public projects created by Jeffrey Harris.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://jefhar.gitlab.io" # the base hostname & protocol for your site
+url: "https://jefharris.us" # the base hostname & protocol for your site
 include: ["_pages"]
 timezone: America/Los_Angeles
 source: app
@@ -66,10 +66,12 @@ twitter:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Jeffrey Harris"
   avatar           : https://picsum.photos/200?random=1 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  bio              : > #
+    Re-entry student pursuing a Bachelors in Computer Science with an emphasis in
+    Software Engineering. Projected graduation in May 2021. Sitting in the dark with the #PGEshutdown
+  location         : "Bay Area, California"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
