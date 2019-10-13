@@ -5,4 +5,5 @@ entries_layout: grid
 layout: collection
 permalink: /projects/index.html
 title: List of Projects
+classes: wide
 ---
