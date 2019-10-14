@@ -7,8 +7,8 @@
 
 # Site settings
 title: Portfolio of Jeffrey Harris
-subtitle: At GitLab - subtitle
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+# subtitle: At GitLab - subtitle
+# teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : https://picsum.photos/88?random=1 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : " " # The Masthead # overrides the website title displayed in the masthead, use " " for no title
 description: > # this means to ignore newlines until "baseurl:"
@@ -35,7 +35,7 @@ plugins:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+# paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 
 # Build settings
@@ -66,12 +66,12 @@ twitter:
 
 # Site Author
 author:
-  name             : "Jeffrey Harris"
-  avatar           : https://picsum.photos/200?random=1 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : > #
+  name: "Jeffrey Harris"
+  avatar: https://picsum.photos/200?random=1 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio: > #
     Re-entry student pursuing a Bachelors in Computer Science with an emphasis in
     Software Engineering. Projected graduation in May 2021.
-  location         : "Bay Area, California"
+  location: "Bay Area, California"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -130,20 +130,17 @@ defaults:
       share: true
 
 # Archives
-category_archive:
-  type: jekyll-archives
-  path: /categories/
-tag_archive:
-  type: jekyll-archives
-  path: /tags/
+#category_archive:
+#  type: jekyll-archives
+#  path: /categories/
+#tag_archive:
+#  type: liquid
+#  path: /tags/
 # https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive-taxonomy
-    tag: archive-taxonomy
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
+#jekyll-archives:
+#  enabled:
+#    - tags
+#  layouts:
+#    tag: archive-taxonomy
+#  permalinks:
+#    tag: /tags/:name/

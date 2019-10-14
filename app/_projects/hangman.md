@@ -2,9 +2,14 @@
 title: Hangman
 date: September 25, 2019
 image: /assets/img/hangman-java.png
+header:
+  teaser: /assets/img/hangman-java.png
 tags: [Java, Java-13]
 ---
 [Github source](https://github.com/jefhar/hangman-java)
+
+![Hangman screenshot](/assets/img/hangman-java.png "Hangman screenshot"){: height="250px"}
+
 ## Overview
 **Hangman** is the simple find a word game played by children with pencil
 and paper the world over. Is it the best? Probably not. Is the the fastest?
@@ -28,5 +33,5 @@ docker run -it jefhar/hangman:java
 ```
 
 ### Code
-{% include icon-github.html username=site.github_username %} You can find the source code for Hangman at
-[{% include icon-github.html username=site.github_username %}/hangman-java](https://github.com/jefhar/hangman-java).
+You can find the source code for Hangman at
+[GitHub](https://github.com/jefhar/hangman-java).
