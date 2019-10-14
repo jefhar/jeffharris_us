@@ -20,7 +20,7 @@ timezone: America/Los_Angeles
 source: app
 locale: "en-US"
 theme: minimal-mistakes-jekyll
-minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "default" ,"dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "default" ,"dirt", "neon", "mint", "plum", "sunrise"
 # google_site_verification :
 # bing_site_verification   :
 # breadcrumbs            : false # true, false (default)
@@ -70,7 +70,7 @@ author:
   avatar           : https://picsum.photos/200?random=1 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : > #
     Re-entry student pursuing a Bachelors in Computer Science with an emphasis in
-    Software Engineering. Projected graduation in May 2021. Sitting in the dark with the #PGEshutdown
+    Software Engineering. Projected graduation in May 2021.
   location         : "Bay Area, California"
   links:
     - label: "Email"
