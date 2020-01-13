@@ -1,6 +1,6 @@
 ---
-layout: single
-permalink: /about/
+layout: page
+permalink: /about
 title: About Me
 ---
 

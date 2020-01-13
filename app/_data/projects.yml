@@ -1,0 +1,37 @@
+- name: Projects
+  projects:
+    - name: Hangman
+      date: September 25, 2019
+      description: <em>Hangman</em> is the simple find a word game played by children with pencil and paper the world over. Is it the best? Probably not. Is the the fastest? Probably not. However, I built it and it works.
+        This uses the `/usr/share/dict/american-english` word file from Ubuntu 19.04.
+        The proper nouns and words with non-letter characters have been removed.
+      dockerhub: jefhar/hangman
+      github: jefhar/hangman-java
+      icon: fab fa-java
+      image: hangman-java.png
+
+    - name: Mass Effect Shepard Generator
+      description: Mass Effect, the 2007 Bioware video game, starts by asking the player to create his or her own character.
+        <br>
+        Sometimes, a player just needs random choices. This page pulls an data from an API and creates a page
+        with the random choices for the user to enter.
+        <br>
+        The API is vanilla PHP, built in the /api-src
+        folder. On each push to the Master git branch, GitLab's CI/CD runner pushes a copy of the repository
+        to the API server, refreshes composer dependencies and updates the `document_root` directory for
+        zero-downtime deployment.
+      gitlab: jefhar/mestarter
+      icon: fab fa-react
+      image: mestarter.png
+      homepage: https://jefhar.gitlab.io/mestarter/
+
+    - name: Odds or Evens
+      description: <em>Odds Or Evens</em> is a simple game played by two people. One chooses "Odds" or "Evens," then both
+                     players shoot by placing a hand with extended fingers into the middle. The fingers are added, and if
+                     the sum is odd, the "Odds" player wins. Otherwise, the "Evens" player wins.
+
+      dockerhub: jefhar/oddsorevens
+      github: jefhar/odds-or-evens
+      date: October 9, 2019
+      image: OddsEvens.png
+      icon: fab fa-java
