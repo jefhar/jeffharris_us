@@ -1,14 +1,14 @@
-- name: Projects
+- name: Web Projects
   projects:
-    - name: Hangman
-      date: September 25, 2019
-      description: <em>Hangman</em> is the simple find a word game played by children with pencil and paper the world over. Is it the best? Probably not. Is the the fastest? Probably not. However, I built it and it works.
-        This uses the `/usr/share/dict/american-english` word file from Ubuntu 19.04.
-        The proper nouns and words with non-letter characters have been removed.
-      dockerhub: jefhar/hangman
-      github: jefhar/hangman-java
-      icon: fab fa-java
-      image: hangman-java.png
+    - name: Inventory System
+      date: February 26, 2020
+      gitlab: jefhar/inventory
+      icon: fab fa-php
+      homepage: https://inventory.jeffharris.us
+      description: <em>Inventory</em> is a work-in-process. This is a project for a local IT remarketer. This allows the
+        business to keep track of consigment inventory as it enters the warehouse and sales. The github repo is a mirror
+        of the latest master branch with a few files anonymized to protect the warehouse. Try the demo at
+        <a href="https://inventory.jeffharris.us">inventory.jeffharris.us</a>.
 
     - name: Mass Effect Shepard Generator
       description: Mass Effect, the 2007 Bioware video game, starts by asking the player to create his or her own character.
@@ -24,6 +24,19 @@
       icon: fab fa-react
       image: mestarter.png
       homepage: https://jefhar.gitlab.io/mestarter/
+
+- name: Classwork Projects
+  projects:
+    - name: Hangman
+      date: September 25, 2019
+      description: <em>Hangman</em> is the simple find a word game played by children with pencil and paper the world
+        over. Is it the best? Probably not. Is the the fastest? Probably not. However, I built it and it works.
+        This uses the `/usr/share/dict/american-english` word file from Ubuntu 19.04.
+        The proper nouns and words with non-letter characters have been removed.
+      dockerhub: jefhar/hangman
+      github: jefhar/hangman-java
+      icon: fab fa-java
+      image: hangman-java.png
 
     - name: Odds or Evens
       description: <em>Odds Or Evens</em> is a simple game played by two people. One chooses "Odds" or "Evens," then both
