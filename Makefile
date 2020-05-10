@@ -8,3 +8,6 @@ run: build
 
 test:
 	gitlab-runner exec docker test
+
+update:
+	docker run --rm -v "$(ROOT_DIR):/src" ruby:latest sh -c 'cd /src/ && bundle config set path 'vendor/bundle' && bundle update'
