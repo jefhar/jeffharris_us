@@ -3,7 +3,7 @@
     - name: Domain Oriented Laravel
       description: Domain oriented Laravel is a fork of the <a href="https://www.laravel.com">Laravel Framework</a>
         <br>
-        Using the <a href="https://stitcher.io/blog/laravel-beyond-crud-01-domain-oriented-laravel">excelent posts</a>
+        Using the <a href="https://stitcher.io/blog/laravel-beyond-crud-01-domain-oriented-laravel">excellent posts</a>
         by Brent as a guide, this is a one-step package to install Laravel and make changes necessary to have an
         opinionated separate domain area from that of the Laravel Framework. Also included is a <a href="https://www.docker.com">docker
         </a> environment and commonly used tools.
