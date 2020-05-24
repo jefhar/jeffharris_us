@@ -7,14 +7,13 @@
 // Don't hesitate to remove it to have a standard Bootstrap behavior
 
 
-// Minty 4.3.1
+// formerly Minty 4.3.1
 // Bootswatch
 
 //
 // Color system
 //
 @import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
-@import url(https://fonts.googleapis.com/css?family=Lora:400,700&display=swap);
 $headings-font-family:Lora;
 
 $white:    #fff !default;
@@ -56,6 +55,10 @@ $enable-shadows:true;
 
 $yiq-contrasted-threshold: 250 !default;
 
+$spacers: (
+  6: ($spacer * 12)
+);
+
 // Body
 
 $body-color:                $gray-600 !default;
@@ -68,7 +71,7 @@ $border-radius-sm:            .3rem !default;
 
 // Fonts
 
-$headings-font-family:        "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$headings-font-family:        Lora;
 $headings-color:              $gray-700 !default;
 
 // Tables
@@ -81,7 +84,6 @@ $dropdown-link-hover-color:         $white !default;
 $dropdown-link-hover-bg:            $secondary !default;
 
 // Navbar
-
 $navbar-dark-color:                 rgba($white,.6) !default;
 $navbar-dark-hover-color:           $white !default;
 
@@ -112,3 +114,8 @@ $pagination-disabled-border-color:  $pagination-disabled-bg !default;
 $breadcrumb-bg:                     $primary !default;
 $breadcrumb-divider-color:          $white !default;
 $breadcrumb-active-color:           $breadcrumb-divider-color !default;
+
+
+// anchors on bg-primary block
+$link-dark-color: $info;
+$link-dark-hover-color: rgba($info, .6);
