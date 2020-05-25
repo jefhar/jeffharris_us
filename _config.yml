@@ -17,7 +17,6 @@ header_pages:
 homepage: https://jeffharris.us
 permalink: /:categories/:title/
 
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -50,6 +49,8 @@ github_username: jefhar
 gitlab_username: jefhar
 linkedin_username: jeff-harris-9b609814a
 twitter_username: jefhar70
+
+fathom_key: MQWTS
 
 description: > #
   Re-entry student pursuing a Bachelors in Computer Science with an emphasis in
