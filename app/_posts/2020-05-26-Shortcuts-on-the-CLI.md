@@ -32,10 +32,10 @@ name of the image, so I might `run ubuntu:bionic` or `run phpdockerio/php74-fpm:
  
 Let's check to see if `run` is taken:
 
-```bash
+{% highlight shell %}
 $ type run 
 bash: type: run: not found
-```
+{% endhighlight %}
 Good. It's available. I will put my file in my `~/bin/` folder so it will be in my path.
 You might need to create it though, so `$ mkdir ~/bin` will make the directory. If
 you did create the folder, it might not be in your `$PATH` yet. I have seen some
@@ -44,10 +44,11 @@ path. If it's not in your path, open another terminal or console. I need to crea
 a file, so I'll use my handy `vi ~/bin/run`. Actually, I'll use `nano`, but
 whatever you want. The file will have the following lines:
 
-```bash
+{% highlight shell linenos %}
 #!/bin/bash
 docker run -it --rm -v"$(PWD):/application:delegated" $1 bash
-```
+{% endhighlight %}
+
 The first line, the `hashbang` identifies the application that will be used to parse
 this file. For a simple one-line script, or the "copy, move, rename" scripts you
 hear so much about don't need a `hashbang`, the script will be run in whatever
@@ -73,10 +74,10 @@ unless you know what you're doing, save your files in `~/bin`. It is the only
 directory that you have full executable privileges, and no one else but the
 system god can write to. Got your new terminal open yet?
 
-```bash
+{% highlight shell %}
 $ run ubuntu:latest
 zsh: permission denied: run
-```
+{% endhighlight %}
 So what happened to "it's in your path?" It's there, the error command tells us
 exactly that: `permission denied`. Well that makes sense, where do you think writing
 a file would make it executable? I need to apply permissions to the file to allow
@@ -86,26 +87,26 @@ it to be a series of commands to be run by the system. obviously, typing `chmod
 also have a hangnail on my index finger. Damn quarantine. I'm
 going to `nano ~/bin/cx`. Feel free to use `vi` or `pico` if you want. lol
  
-```bash
+{% highlight shell linenos %}
 #!/bin/bash
 chmod +x $1
-```
+{% endhighlight %}
 Again, defining the interpreter with the `hashbang`, this will call `chmod +x`
 (that's two more times) with the first argument after `cx` (so much easier). Now I have a
 command to make a command executable. Except it's not executable. Here's how I fix
 that:
-```bash
+{% highlight shell %}
 $ sh ~/bin/cx ~/bin/cx
-```
+{% endhighlight %}
 And boom. I use the `sh` shell to run the `~/bin/cx` command on `~/bin/cx`. Since
 `~/bin/cx` is the first argument sent to `~/bin/cx`, `~/bin/cx` will be passed to
 `chmod +x` giving it the privilege it needs to become executable. To prove it:
 
-```bash
+{% highlight shell %}
 $ cx ~/bin/run
-```
+{% endhighlight %}
 No news is good news, so we know the command ran. Now I can do something as wacky as 
-```bash
+{% highlight shell %}
 $ cd ~/bin; run ubuntu:latest
 root@15531bbe4ff5:/# cd /application
 root@15531bbe4ff5:/application# ls -ltra
@@ -119,21 +120,21 @@ total 2372
 drwxrwxrwx 8 root root     256 May 27 04:30 .
 drwxr-xr-x 1 root root    4096 May 27 04:31 ..
 root@15531bbe4ff5:/application# 
-```
+{% endhighlight %}
 And there is my `~/bin` directory attached to `/application` in an `ubuntu:latest
 ` container. Awesome. Exit the container and enter `$ cd -` at the command prompt to
 go back where you came from, presumably a project root. I whip out my new toy and
 
-```bash
+{% highlight shell %}
 $ run node:14
 root@3fce8c00b8cf:/# cd /application/
 root@3fce8c00b8cf:/application# yarn install
 yarn install v1.22.4
 [1/4] Resolving packages...
 [2/4] Fetching packages...
-```
+{% endhighlight %}
 ![Alt text](https://i3.kym-cdn.com/photos/images/original/000/401/463/ee2.png)
-```bash
+{% highlight shell %}
 info "fsevents@1.2.13" is an optional dependency and failed compatibility check. Excluding it from installation.
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
@@ -168,11 +169,46 @@ fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?c20b5b7362d8d
     fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?1ab236ed440ee51810c56bd16628aef0   198 KiB           [emitted]  
   fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?b15db15f746f29ffa02638cb455b8ec0  77.6 KiB           [emitted]  
    fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?bea989e82b07e9687c26fc58a4805021   101 KiB           [emitted]  
-```
+{% endhighlight %}
 Now I can enter a docker environment that is identical to the deployment environment
 , and manually run commands that are automated for deployment with a minimal of key
-presses.
+presses. Unfortunately for JavaScript developing, an `npm run watch` in this container will
+ not proxy the `docker-compose` web server, because they are on different networks.
+ I'll fix that deficiency in an upcoming post. 
+ 
+ However, it works with any image. This blog is powered by
+[Jekyll](https://jekyllrb.com/) so I can view it locally when writing, by first
+creating a webserver:
+`docker run -d -p 80:80 -v"$(pwd)/_site:/usr/share/nginx/html" nginx:alpine`.
+Then, I can have Jekyll watch for file changes, so I can see it at <http://localhost:80> and
+make sure it looks good before I deploy it.
 
-Unfortunately for JavaScript developing, an `npm run watch` in this container will
-not proxy the `docker-compose` web server, because they are on different networks.
-I'll fix that deficiency in an upcoming post.
+{% highlight shell %}
+$ run ruby:latest
+  root@edfd0db95fa8:/# cd /application ; bundle config set path '/vendor/bundle'; bundle install; bundle exec jekyll build --watch
+  Fetching gem metadata from https://rubygems.org/.........
+  Fetching public_suffix 4.0.5
+  Installing public_suffix 4.0.5
+  Fetching addressable 2.7.0
+  Installing addressable 2.7.0
+  Using bundler 2.1.4
+  Fetching colorator 1.1.0
+  Installing colorator 1.1.0
+  .
+  .
+  .
+  Bundle complete! 8 Gemfile dependencies, 34 gems now installed.
+  Bundled gems are installed into `/vendor/bundle`
+  Post-install message from i18n:
+  .
+  .
+  .
+
+                      done in 2.703 seconds.
+   Auto-regeneration: enabled for 'app'
+
+{% endhighlight %}
+
+Hopefully this will help out someone as much as it helps me to write it. If this
+helps, or you want to know more, reach out to me, or
+[file an issue](https://gitlab.com/jefhar/jefhar.gitlab.io/-/issues).
