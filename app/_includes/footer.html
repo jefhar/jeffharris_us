@@ -1,4 +1,4 @@
-<div class="pt-4 pb-1 rounded-top rounded-lg border-top border-secondary bg-primary fixed-bottom text-light">
+<div id="footer" class="pt-4 pb-1 rounded-top rounded-lg border-top border-secondary bg-primary fixed-bottom text-light nav-down">
   <div class="container-fluid">
 
     <div class="row px-1">
@@ -63,10 +63,15 @@
     </div>
   </div>
 </div>
-{% if site.fathom_key %}
+{%- if site.fathom_key -%}
   {%- include fathom.html -%}
 {%- endif -%}
 
 {% if site.google_analytics %}
   {%- include google_analytics.html -%}
 {%- endif -%}
+
+{%- if page.id -%}
+  {%- include utterance.html -%}
+{%- endif -%}
+{%- include scrollaway.html -%}
