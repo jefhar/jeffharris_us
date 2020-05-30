@@ -1,19 +1,21 @@
 <script defer='defer'>
-  const waitForJQuery = setInterval(function () {
+  const waitForJQuery = setInterval(() => {
     if (typeof $ != 'undefined') {
 
       // Hide Header on on scroll down
       const $footer = $('#footer')
       let didScroll
       let lastScrollTop = 0
-      const delta = 50
-      const navbarHeight = $footer.outerHeight()
+      const delta = 50; // Least amount of change to check whether to show or hide footer
+      const footerHeight = $footer.outerHeight()
+      console.info('footerHeight', footerHeight)
 
-      $(window).scroll(function (event) {
+
+      $(window).scroll((event) => {
         didScroll = true
       })
 
-      setInterval(function () {
+      setInterval(() => {
         if (didScroll) {
           hasScrolled()
           didScroll = false
