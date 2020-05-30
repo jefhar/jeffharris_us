@@ -345,3 +345,12 @@ legend {
     text-decoration: $link-hover-decoration;
   }
 }
+
+// Plain CSS
+#footer {
+  transition: top 0.2s ease-in-out;
+}
+
+.nav-down {
+  bottom: 9000px;
+}
