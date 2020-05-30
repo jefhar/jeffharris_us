@@ -22,10 +22,10 @@ image and re-install `composer` and `yarn` dependencies. That's one of the magic
 things about `docker`. A few command lines will get you back to a pristine environment.
 
 I've been updating my dependencies and refreshing the database, and testing CI scripts
-long enough that I'm starting to get tired of typing in `docker run -it --rm -v"$
- (PWD):/application:delegated" node:14 bash` or
-`docker run -it --rm -v"$(PWD):/application:delegated" project/php:7.4 bash` to grab
-an interactive shell inside the container. And it's always the same, but it's
+long enough that I'm starting to get tired of typing in\
+`docker run -it --rm -v"$(PWD):/application:delegated" node:14 bash` or\
+`docker run -it --rm -v"$(PWD):/application:delegated" project/php:7.4 bash`
+to grab an interactive shell inside the container. And it's always the same, but it's
 different. The variable in what to type is the container name. Simple. If I can
 make this run a command, I want my command to be named `run`. I can pass to it the
 name of the image, so I might `run ubuntu:bionic` or `run phpdockerio/php74-fpm:latest`.
