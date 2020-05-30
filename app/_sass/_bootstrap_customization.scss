@@ -348,9 +348,11 @@ legend {
 
 // Plain CSS
 #footer {
-  transition: top 0.2s ease-in-out;
+  position: fixed;
+  transition: bottom 0.3s ease-in 0s;
+  bottom: -132px;
 }
 
-.nav-down {
-  bottom: 9000px;
+#footer:hover {
+  bottom: -6px;
 }
