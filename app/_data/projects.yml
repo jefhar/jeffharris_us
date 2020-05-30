@@ -1,5 +1,14 @@
 - name: Web Projects
   projects:
+    - name: JeffHarris.us
+      description: This webpage
+        <br>
+        Using the power of <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://docs.gitlab.com/ee/user/project/pages/">
+        GitLab Pages</a>, this page is magically updated on every push to master.
+      gitlab: jefhar/jefhar.gitlab.io
+      icon: fas fa-home
+      homepage: https://gitlab.com/jefhar/jefhar.gitlab.io
+
     - name: Domain Oriented Laravel
       description: Domain oriented Laravel is a fork of the <a href="https://www.laravel.com">Laravel Framework</a>
         <br>
@@ -8,7 +17,7 @@
         opinionated separate domain area from that of the Laravel Framework. Also included is a <a href="https://www.docker.com">docker
         </a> environment and commonly used tools.
         <br>`composer create-project jefhar/laravel-domain-oriented blog`
-      githuyb: jefhar/laravel-domain-oriented
+      github: jefhar/laravel-domain-oriented
       icon: fab fa-php
       homepage: https://github.com/jefhar/laravel-domain-oriented
 
