@@ -1,7 +1,7 @@
 <!-- Weather -->
 <script>
   const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/118,64/forecast'
-  const weatherRow = document.getElementById('weatherRow')
+  const weatherDom = document.getElementById('weatherRow')
   const weatherCards = []
   const request = new Request(weatherAPIUrl,
     {
@@ -16,36 +16,40 @@
   })
     .then(result => result.json())
     .then(data => {
+      const date = new Date(data.properties.updated)
+      document.getElementById('weatherUpdated').innerText = `Updated at ${date.toLocaleString()}`
       const periods = data.properties.periods
-      console.info(periods)
-      periods.forEach(period => {
-        console.info(period)
-        const largeIcon = period.icon.replace('medium', 'large')
+      for (let i = 0; i < 8; ++i) {
+        const period = periods[i]
         let card = document.createElement('div')
-        card.classList.add('col-6', 'col-md-4', 'col-lg-3' )
+        card.classList.add('col-6', 'col-md-4', 'col-lg-3')
+        if (i > 3) {
+          card.classList.add('d-none', 'd-md-block')
+        }
+        if (i > 5) {
+          card.classList.replace('d-md-block', 'd-lg-block')
+        }
         card.innerHTML =
-          `<div class="card">
-    <img class="card-img-top" src="${largeIcon}" alt="${period.shortForecast}">
-    <div class="card-body">
-      <h5 class="card-title">${period.name}: ${period.shortForecast}</h5>
-      <p class="card-text">${period.detailedForecast}</p>
-      <p class="card-text">Temperature is ${period.temperature}${period.temperatureUnit}, winds
-from the ${period.windDirection} up to ${period.windSpeed}.</p>
-    </div>
-  </div>`
-        console.info(card)
+          `<div class="card mb-2">
+  <h5 class="card-header">${period.name}</h5>
+  <div class="card-body">
+    <h6 class="card-title">${period.shortForecast}</h6>
+    <p class="card-text hyphenate small">
+<img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">
+${period.detailedForecast}</p>
+  </div>
+</div>`
         weatherCards.push(card)
-      })
-      console.info(weatherCards)
+      }
     })
     .catch((error) => {
       alert(error)
     })
     .finally(() => {
-      console.info(weatherCards)
       weatherCards.forEach(card => {
-        weatherRow.appendChild(card)
+        weatherDom.appendChild(card)
       })
+
     })
 
 

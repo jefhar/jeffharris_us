@@ -20,10 +20,6 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&disp
   background-color: $primary !important;
 }
 
-.border-dark {
-  border-color: $secondary !important;
-}
-
 // Buttons =====================================================================
 
 .btn {
@@ -355,4 +351,12 @@ legend {
 
 #footer:hover {
   bottom: -6px;
+}
+
+.hyphenate {
+  hyphens: auto;
+}
+
+.weather-icon {
+  border: 1px solid black;
 }
