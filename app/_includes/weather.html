@@ -1,0 +1,53 @@
+<!-- Weather -->
+<script>
+  const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/118,64/forecast'
+  const weatherRow = document.getElementById('weatherRow')
+  const weatherCards = []
+  const request = new Request(weatherAPIUrl,
+    {
+      header: { 'Content-Type': 'application/json' }
+    })
+
+  fetch(request).then(response => {
+    if (!response.ok) {
+      alert(`Unable to fetch weather from API. Server Error ${response.status}.`)
+    }
+    return response
+  })
+    .then(result => result.json())
+    .then(data => {
+      const periods = data.properties.periods
+      console.info(periods)
+      periods.forEach(period => {
+        console.info(period)
+        const largeIcon = period.icon.replace('medium', 'large')
+        let card = document.createElement('div')
+        card.classList.add('col-6', 'col-md-4', 'col-lg-3' )
+        card.innerHTML =
+          `<div class="card">
+    <img class="card-img-top" src="${largeIcon}" alt="${period.shortForecast}">
+    <div class="card-body">
+      <h5 class="card-title">${period.name}: ${period.shortForecast}</h5>
+      <p class="card-text">${period.detailedForecast}</p>
+      <p class="card-text">Temperature is ${period.temperature}${period.temperatureUnit}, winds
+from the ${period.windDirection} up to ${period.windSpeed}.</p>
+    </div>
+  </div>`
+        console.info(card)
+        weatherCards.push(card)
+      })
+      console.info(weatherCards)
+    })
+    .catch((error) => {
+      alert(error)
+    })
+    .finally(() => {
+      console.info(weatherCards)
+      weatherCards.forEach(card => {
+        weatherRow.appendChild(card)
+      })
+    })
+
+
+</script>
+<!-- End Weather -->
