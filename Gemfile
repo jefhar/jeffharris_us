@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 # This will help ensure the proper Jekyll version is running.
 
-gem "jekyll", "4.0.0"
+gem "jekyll", ">=4.0.0"
 # gem 'jekyll-theme-portfolio', :git => "https://github.com/tedivm/jekyll-theme-portfolio.git"
 gem 'jekyll-theme-portfolio', '~> 1.3'
 
@@ -21,7 +21,7 @@ end
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
-  gem "tzinfo", "~> 1.2"
+  gem "tzinfo", ">= 1.2"
   gem "tzinfo-data"
 end
 

@@ -16,9 +16,9 @@
   })
     .then(result => result.json())
     .then(data => {
-      const date = new Date(data.properties.updated)
+      const { periods, updated } = data.properties
+      const date = new Date(updated)
       document.getElementById('weatherUpdated').innerText = `Updated at ${date.toLocaleString()}`
-      const periods = data.properties.periods
       for (let i = 0; i < 8; ++i) {
         const period = periods[i]
         let card = document.createElement('div')
@@ -43,7 +43,7 @@ ${period.detailedForecast}</p>
       }
     })
     .catch((error) => {
-      alert(error)
+      alert('Fetching weather failed. Please try again in a few moments.')
     })
     .finally(() => {
       weatherCards.forEach(card => {
