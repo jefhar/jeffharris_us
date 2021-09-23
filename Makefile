@@ -16,4 +16,4 @@ update:
 	docker run --rm -v "$(ROOT_DIR):/src" ruby:latest sh -c "cd /src/ && bundle config set path 'vendor/bundle' && bundle lock"
 
 newpost:
-	echo "---\nlayout: post\ntitle: title\n---" > app/_posts/`date +%Y-%m-%d-`title_`date +%H_%M`.md
+	echo "---\nlayout: post\ntitle: title\n---" > app/_drafts/`date +%Y-%m-%d-`title_`date +%H_%M`.md
