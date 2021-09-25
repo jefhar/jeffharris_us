@@ -20,19 +20,18 @@ layout: default
     {{ content }}
   </section>
 
-  <div class="related border-top rounded-top">
-    <h3>Related Posts</h3>
-    {% assign firstCategory = page.categories | first %}
-    {% assign relatedCount = 0 %}
-    {% for related in site.categories[firstCategory] %}
-    {% unless page.permalink == related.permalink %}
-    {% assign relatedCount = relatedCount | plus: 1 %}
-    <a href="{{related.permalink}}">{{ related.title }}</a>
-    {% endunless %}
-
-    {% if relatedCount == 3 %}
-    {% break %}
-    {% endif %}
-    {% endfor %}
-  </div>
+    <div class="related border-top rounded-top pt-2 mt-4">
+        <h3>Related Posts</h3>
+        <ul>
+            {%- assign relatedCount = 0 -%}
+            {%- assign date_format = "%b %-d, %Y" -%}
+            {%- for related in site.related_posts -%}
+            {% assign relatedCount = relatedCount | plus: 1 %}
+            <li><a href="{{ related.url }}">{{ related.title }}</a>. - {{ related.date | date: date_format }}</li>
+            {%- if relatedCount == 3 -%}
+            {%- break -%}
+            {%- endif -%}
+            {%- endfor -%}
+        </ul>
+    </div>
 </article>
