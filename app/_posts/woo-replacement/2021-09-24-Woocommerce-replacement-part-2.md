@@ -1,16 +1,19 @@
 ---
-categories: php, woocommerce
 layout: post
-title: A Woocommerce Replacement Part ][
+category: wooCommerce-replacement
+tags:
+  - Laravel
+  - php
+  - WooCommerce
+title: A WooCommerce Replacement Part ][
 ---
-
-# Shaving the Yak
-
 If you
 didn't [do the homework](https://jeffharris.us/php/A-Woocommerce-replacement/#homework-for-next-time)
 last time, you are following along with me as I get my server setup before
 starting to reverse engineer (and look at publicly available source code)
 the Printful WooCommerce plugin.
+
+## Shaving the Yak
 
 Just to recap, WordPress is built for anything, and has trouble running
 everything, so I am going to try something. A while back, I was setting up a
@@ -24,7 +27,7 @@ money in appreciation, and I can retire as independently wealthy within the
 month. If not, hopefully I'll learn something and become better.
 
 So head on over to your host (or use my affiliate link at Digital Ocean
-https://m.do.co/c/cc1234dc66bf and receive $100, 60-day credit as soon as you
+[https://m.do.co/c/cc1234dc66bf](https://m.do.co/c/cc1234dc66bf) and receive $100, 60-day credit as soon as you
 add a valid payment method to your account. And when you spend $25, I’ll also
 receive a $25 credit with DigitalOcean, which will pay for a couple month's
 hosting, so we both win) and set up a VPS.
@@ -110,7 +113,7 @@ sniStrict = true
 
 Create a `Makefile`, making sure to use tabs to indent:
 
-```makefile
+{% highlight make linenos %}
 traefik:
 	docker network create web || echo "Docker network web already created."
 	touch acme.json
@@ -126,7 +129,7 @@ traefik:
 		--name traefik \
 		--restart unless-stopped \
 		traefik:v2.2
-```
+{% endhighlight %}
 
 Instead of running any of the commands listed in the linked tutorial, simply
 `make` and traefik takes over. Give it a few minutes to settle, and browse to
@@ -162,7 +165,7 @@ APP_PORT=8080
 
 Create the following `docker-compose.override.yml`:
 
-```yaml
+{% highlight yaml linenos %}
 version: "3"
 
 networks:
@@ -186,13 +189,23 @@ services:
       - traefik.http.routers.web.tls=true
       - traefik.http.routers.web.tls.certresolver=lets-encrypt
       - traefik.port=80
+      - traefik.http.routers.web.middlewares=web-www-https-redirect, securedheaders
+      - traefik.http.middlewares.securedheaders.headers.forcestsheader=true
+      - traefik.http.middlewares.securedheaders.headers.sslRedirect=true
+      - traefik.http.middlewares.securedheaders.headers.STSPreload=true
+      - traefik.http.middlewares.securedheaders.headers.ContentTypeNosniff=true
+      - traefik.http.middlewares.securedheaders.headers.STSIncludeSubdomains=true
+      - traefik.http.middlewares.securedheaders.headers.STSSeconds=15552001
+  
   mysql:
     labels:
       - traefik.enable=false
   redis:
     labels:
       - traefik.enable=false
-```
+
+{% endhighlight %}
+
 Changing `your_domain` with your actual domain name.
 
 Since people habitually type www for a domain, I want the www subdomain to be

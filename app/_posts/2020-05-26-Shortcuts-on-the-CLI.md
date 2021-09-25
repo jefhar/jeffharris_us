@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Shortcuts on the CLI
-tags: CLI, Laravel
+tags:
+ - CLI
+ - Laravel
 category: "Command Line"
 ---
 I'm working on a project, over budget and late. To keep the development environment
@@ -133,7 +135,7 @@ yarn install v1.22.4
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 {% endhighlight %}
-![Alt text](https://i3.kym-cdn.com/photos/images/original/000/401/463/ee2.png)
+![Alt text](/assets/images/much_later.jpg)
 {% highlight shell %}
 info "fsevents@1.2.13" is an optional dependency and failed compatibility check. Excluding it from installation.
 [3/4] Linking dependencies...

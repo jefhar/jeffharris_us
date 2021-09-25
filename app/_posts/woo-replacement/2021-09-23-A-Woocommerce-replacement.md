@@ -1,11 +1,12 @@
 ---
 layout: post
-title: A Woocommerce Replacement
-categories: php, woocommerce
+title: A WooCommerce Replacement
+category: wooCommerce-replacement
+tags:
+  - Laravel
+  - php
+  - WooCommerce
 ---
-
-# Making some moola?
-
 I have a WooCommerce site setup to sell some POD shirts fulfilled by Printful.
 When I was setting it up, I was having problems syncing my products to my site.
 The only thing that solved it was throwing more resources at it. Instead of 
@@ -24,6 +25,8 @@ build a Laravel application that can handle a Printful store. Since we can make
 a route prefix for the products, product categories, and other store items, it
 should be fairly trivial to create route prefixes for any other static-ish pages
 that are needed.
+
+## Making some moola?
 
 Printful has an API for creating your own store, but this is really designed 
 for a whole package deal where you or your customers can design products on 

@@ -18,7 +18,7 @@ It's already part of 95% of [browsers](https://caniuse.com/#search=fetch)
 unless you absolutely need that last 5%, it looks fine. It does work a little
 differently than axios, so it needs a slightly different structure.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 // Setup the data to be sent.
 const postData = {
   meat: 'good',
