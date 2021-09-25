@@ -12,6 +12,7 @@ author: Jeffrey Harris
 # Header Links - all optional. If set these create header links.
 header_pages:
   - about.md
+  - tags.html
   - portfolio.md
 
 homepage: https://jeffharris.us
@@ -28,13 +29,14 @@ whatis: >
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://jefharris.us" # the base hostname & protocol for your site
-timezone: America/Los_Angeles
+timezone: America/New_York
 source: app
 locale: "en-US"
 
 # Build settings
 markdown: kramdown
 toc_levels: 1..6
+show_excerpts: true
 
 # HTML Compression
 # - https://jch.penibelst.de/

@@ -3,22 +3,25 @@ layout: default
 ---
 <article>
 
-  <header>
-    <h1>{{ page.title | escape }}</h1>
-    <p class="text-muted">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {%- assign date_format = "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-        • {{ page.author }}
-      {%- endif -%}
-    </p>
-  </header>
+    <header>
+        <h1>{{ page.title | escape }}</h1>
+        <p class="text-muted">
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+                {%- assign date_format = "%b %-d, %Y" -%}
+                {{ page.date | date: date_format }}
+            </time>
+            {%- for tag in page.tags -%}
+            <a href="/tags/#{{ tag | slugify}}" class="badge badge-secondary">{{ tag }}</a>
+            {% endfor %}
+            {%- if page.author -%}
+            • {{ page.author }}
+            {%- endif -%}
+        </p>
+    </header>
 
-  <section class="section">
-    {{ content }}
-  </section>
+    <section class="section">
+        {{ content }}
+    </section>
 
     <div class="related border-top rounded-top pt-2 mt-4">
         <h3>Related Posts</h3>
