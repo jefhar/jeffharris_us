@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Woocommerce Replacement
-categories: php
+categories: php, woocommerce
 ---
 
 # Making some moola?
