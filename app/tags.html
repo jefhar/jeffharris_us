@@ -1,0 +1,26 @@
+---
+layout: page
+permalink: /tags/
+title: Tags
+---
+{%- assign tags = site.tags | sort -%}
+<nav>
+    {% for tag in tags %}
+    <a class="btn btn-light" href="#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
+    {%- endfor -%}
+</nav>
+<div class="mt-5"></div>
+<article>
+    {% for tag in tags %}
+    <h3 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h3>
+    <ul>
+        {% for post in tag[1] %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a>
+            {% if post.categories %}
+            Categorized under {{ post.categories |array_to_sentence_string }}.
+            {%- endif -%}
+        </li>
+        {%- endfor -%}
+    </ul>
+    {%- endfor -%}
+</article>
