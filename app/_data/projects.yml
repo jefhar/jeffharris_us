@@ -1,4 +1,5 @@
 - name: Web Projects
+  description: Projects developed for the web.
   projects:
     - name: JeffHarris.us
       description: This webpage
@@ -9,7 +10,7 @@
       icon: fas fa-home
       homepage: https://gitlab.com/jefhar/jefhar.gitlab.io
 
-    - name: Domain Oriented Laravel
+    - name: Domain Oriented Laravel (Archived; out of date)
       description: Domain oriented Laravel is a fork of the <a href="https://www.laravel.com">Laravel Framework</a>
         <br>
         Using the <a href="https://stitcher.io/blog/laravel-beyond-crud-01-domain-oriented-laravel">excellent posts</a>
@@ -21,15 +22,15 @@
       icon: fab fa-php
       homepage: https://github.com/jefhar/laravel-domain-oriented
 
-    - name: Inventory System
+    - name: Inventory System (Laravel with React)
       date: February 26, 2020
       gitlab: jefhar/inventory
       icon: fab fa-php
       homepage: https://inventory.jeffharris.us
-      description: <em>Inventory</em> is a work-in-process. This is a project for a local IT remarketer. This allows the
-        business to keep track of consigment inventory as it enters the warehouse and sales. The github repo is a mirror
-        of the latest master branch with a few files anonymized to protect the warehouse. Try the demo at
-        <a href="https://inventory.jeffharris.us">inventory.jeffharris.us</a>.
+      description: <em>Inventory</em> is a project for a local IT remarketer that stopped contact during the pandemic.
+        This allows a business to keep track of consignment inventory as it enters the warehouse and sales. The
+        github repo is a delayed mirror of the latest master branch with a few files anonymized to protect the warehouse.
+        Try the demo at <a href="https://inventory.jeffharris.us">inventory.jeffharris.us</a>.
 
     - name: Mass Effect Shepard Generator
       description: Mass Effect, the 2007 Bioware video game, starts by asking the player to create his or her own character.
@@ -46,7 +47,15 @@
       image: mestarter.png
       homepage: https://jefhar.gitlab.io/mestarter/
 
+    - name: Airport Shuttle (Laravel with Inertia and Vuejs)
+      description: In summer 2022, the Barbershop Harmony Society will hold their [International Convention](https://www.barbershop.org/events/international-convention)
+        in Charlotte, NC. This is a WIP to allow visitors to request a shuttle from the airport to an uptown hotel.
+      github: jefhar/bhsctl
+      icon: fab fa-laravel
+      homepage: https://github.com/jefhar/bhsctl
+
 - name: Classwork Projects
+  description: Projects developed for, or inspired by a course or class that I attended.
   projects:
     - name: Hangman
       date: September 25, 2019
