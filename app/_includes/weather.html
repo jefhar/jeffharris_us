@@ -1,57 +1,44 @@
 <!-- Weather -->
 <script>
-  const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/118,64/forecast'
-  const weatherDom = document.getElementById('weatherRow')
-  const weatherCards = []
-  const request = new Request(weatherAPIUrl,
-    {
-      header: { 'Content-Type': 'application/json' }
-    })
+    const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/118,64/forecast';
+    const weatherDom = document.getElementById('weatherRow');
+    const request = new Request(weatherAPIUrl, { header: { 'Content-Type': 'application/json' } });
+    let weatherCards;
 
-  fetch(request).then((response) => {
-    if (!response.ok) {
-      alert(`Unable to fetch weather from API. Server Error ${response.status}.`)
-    }
-    return response
-  })
-    .then((result) => result.json())
-    .then((data) => {
-      const { periods, updated } = data.properties
-      const date = new Date(updated)
-      document.getElementById('weatherUpdated').innerText = `Updated at ${date.toLocaleString()}`
-      for (let i = 0; i < 8; ++i) {
-        const period = periods[i]
-        let card = document.createElement('div')
-        card.classList.add('col-6', 'col-md-4', 'col-lg-3')
-        if (i > 3) {
-          card.classList.add('d-none', 'd-md-block')
+    fetch(request).then((response) => {
+        console.info(response);
+        if (!response.ok) {
+            console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + response, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
+            alert(`Unable to fetch weather from API. Server Error ${response.status}.`);
         }
-        if (i > 5) {
-          card.classList.replace('d-md-block', 'd-lg-block')
+        return response;
+    }).then((result) => result.json()).then((data) => {
+        console.info(data);
+        function createCard (index, period) {
+            const card = document.createElement('div');
+            card.classList.add('col-6', 'col-md-4', 'col-lg-3');
+            if (index > 3) {
+                card.classList.add('d-none', 'd-md-block');
+            }
+            if (index > 5) {
+                card.classList.replace('d-md-block', 'd-lg-block');
+            }
+            card.innerHTML =
+                    `<div class="card mb-2"><h5 class="card-header">${period.name} ${period.temperature}&nbsp;&deg;${period.temperatureUnit}</h5><div class="card-body"><h6 class="card-title">${period.shortForecast}</h6><p class="card-text hyphenate small"><img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">${period.detailedForecast}</p></div></div>`;
+            return card;
         }
-        card.innerHTML =
-          `<div class="card mb-2">
-  <h5 class="card-header">${period.name}</h5>
-  <div class="card-body">
-    <h6 class="card-title">${period.shortForecast}</h6>
-    <p class="card-text hyphenate small">
-<img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">
-${period.detailedForecast}</p>
-  </div>
-</div>`
-        weatherCards.push(card)
-      }
-    })
-    .catch((error) => {
-        alert('Fetching weather failed. Please try again in a few moments.')
-    })
-    .finally(() => {
-      weatherCards.forEach(card => {
-        weatherDom.appendChild(card)
-      })
 
-    })
-
-
+        const { periods, updated } = data.properties;
+        const date = new Date(updated);
+        document.getElementById('weatherUpdated').innerText = `Updated at ${date.toLocaleString()}`;
+        weatherCards = periods.slice(0, 8).map((period, index) => createCard(index, period));
+    }).catch((error) => {
+        console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + error, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
+        alert('Fetching weather failed. Please try again in a few moments.');
+    }).finally(() => {
+        weatherCards.forEach((card) => {
+            weatherDom.appendChild(card);
+        });
+    });
 </script>
 <!-- End Weather -->
