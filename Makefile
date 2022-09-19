@@ -1,10 +1,13 @@
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 build:
-	docker run --rm  -v "$(ROOT_DIR):/src" ruby:latest sh -c 'cd /src && bundle install && bundle exec jekyll build'
+	docker run --rm  -v "$(ROOT_DIR):/src" ruby:latest sh -c 'cd /src && bundle install && bundle exec jekyll build --watch'
 
 run: build
-	docker run -d -p 80:80 -v "$(ROOT_DIR)/_site:/usr/share/nginx/html" nginx:alpine
+	docker run -d -p 80:80 -v "$(ROOT_DIR)/_site:/usr/share/nginx/html" --name apache nginx:alpine
+
+shell:
+	docker run --rm -it -v "$(ROOT_DIR):/src" ruby:latest bash
 
 test:
 	gitlab-runner exec docker test
