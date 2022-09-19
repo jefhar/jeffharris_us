@@ -1,19 +1,40 @@
 <!-- Weather -->
 <script>
+    /**
+     * I need some way of running JavaScript through a minifier in the build process.
+     *
+     * @typedef {Object} WeatherPeriod
+     * @property {*} temperatureTrend
+     * @property {Boolean} isDaytime
+     * @property {Number} number
+     * @property {Number} temperature
+     * @property {String} detailedForecast
+     * @property {String} endTime DateString
+     * @property {String} icon
+     * @property {String} name
+     * @property {String} shortForecast
+     * @property {String} startTime DateString
+     * @property {String} temperatureUnit
+     * @property {String} windDirection
+     * @property {String} windSpeed
+     */
     const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/118,64/forecast';
     const weatherDom = document.getElementById('weatherRow');
     const request = new Request(weatherAPIUrl, { header: { 'Content-Type': 'application/json' } });
     let weatherCards;
 
     fetch(request).then((response) => {
-        console.info(response);
         if (!response.ok) {
             console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + response, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
             alert(`Unable to fetch weather from API. Server Error ${response.status}.`);
         }
         return response;
     }).then((result) => result.json()).then((data) => {
-        console.info(data);
+        /**
+         * @param {Number} index
+         * @param {WeatherPeriod} period
+         * @returns {HTMLDivElement}
+         */
         function createCard (index, period) {
             const card = document.createElement('div');
             card.classList.add('col-6', 'col-md-4', 'col-lg-3');
@@ -24,7 +45,7 @@
                 card.classList.replace('d-md-block', 'd-lg-block');
             }
             card.innerHTML =
-                    `<div class="card mb-2"><h5 class="card-header">${period.name} ${period.temperature}&nbsp;&deg;${period.temperatureUnit}</h5><div class="card-body"><h6 class="card-title">${period.shortForecast}</h6><p class="card-text hyphenate small"><img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">${period.detailedForecast}</p></div></div>`;
+                `<div class="card mb-2"><h5 class="card-header">${period.name} ${period.temperature}&nbsp;&deg;${period.temperatureUnit}</h5><div class="card-body"><h6 class="card-title">${period.shortForecast}</h6><p class="card-text hyphenate small"><img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">${period.detailedForecast}</p></div></div>`;
             return card;
         }
 
