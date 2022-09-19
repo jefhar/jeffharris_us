@@ -7,7 +7,7 @@
 
 // Variables ===================================================================
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" !default;
+$web-font-path: "https://fonts.bunny.net/css?family=fira-sans:400|lora:400,700|noto-sans:400" !default;
 @import url($web-font-path);
 
 // Navbar ======================================================================
@@ -359,4 +359,21 @@ legend {
 
 .weather-icon {
   border: 1px solid black;
+}
+
+aside {
+    box-shadow: inset 5px 0 5px -5px $primary;
+    color: $primary;
+    float: right;
+    font-style: italic;
+    margin-bottom: .5rem;
+    margin-left: .5rem;
+    margin-top: .5rem;
+    padding-left: 1rem;
+    width: 40%;
+}
+
+aside >figure> p {
+    margin: .5rem;
+    font-family: 'Fira Sans', sans-serif;
 }
