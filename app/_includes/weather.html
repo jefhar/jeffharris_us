@@ -18,12 +18,54 @@
      * @property {String} windDirection
      * @property {String} windSpeed
      */
-    const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/118,64/forecast';
+    const weatherAPIUrl = 'https://api.weather.gov/gridpoints/GSP/115,60/forecast';
+    const weatherAlertUrl = 'https://api.weather.gov/alerts/active?zone=NCZ071';
+    const weatherAlertsDom = document.getElementById('weatherAlerts');
     const weatherDom = document.getElementById('weatherRow');
-    const request = new Request(weatherAPIUrl, { header: { 'Content-Type': 'application/json' } });
+    const alerts = new Request(weatherAlertUrl, { header: { 'Content-Type': 'application/json' } });
+    const forecast = new Request(weatherAPIUrl, { header: { 'Content-Type': 'application/json' } });
     let weatherCards;
 
-    fetch(request).then((response) => {
+    fetch(alerts).then((response) => {
+        if (!response.ok) {
+            console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + response, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
+        }
+        return response;
+    }).then((response) => response.json()).then((data) => {
+        function createCard (alert) {
+            const column = document.createElement('div');
+            column.classList.add('col-12');
+            const card = document.createElement('div');
+            card.classList.add('card', 'mb-2', 'border-danger');
+            const header = document.createElement('h2');
+            header.classList.add('card-header', 'bg-danger', 'text-white', 'font-weight-bold');
+            header.innerText = alert.properties.event;
+            const body = document.createElement('div');
+            body.classList.add('card-body');
+            const title = document.createElement('h4');
+            title.classList.add('card-title');
+            title.innerText = alert.properties.headline;
+            const paragraphs = alert.properties.description.split(/\n\n/).map((paragraph) => {
+                const section = document.createElement('pre');
+                section.innerText = paragraph;
+                return section;
+            });
+            const text = document.createElement('div');
+            text.classList.add('card-text');
+            paragraphs.forEach((paragraph) => text.appendChild(paragraph));
+            column.appendChild(card);
+            card.appendChild(header);
+            card.appendChild(body);
+            body.appendChild(title);
+            body.appendChild(text);
+
+            return column;
+        }
+        const alerts = data.features.map((alert) => createCard(alert));
+        alerts.forEach((alert) => weatherAlertsDom.appendChild(alert));
+    });
+
+    fetch(forecast).then((response) => {
         if (!response.ok) {
             console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + response, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
             alert(`Unable to fetch weather from API. Server Error ${response.status}.`);
@@ -45,7 +87,7 @@
                 card.classList.replace('d-md-block', 'd-lg-block');
             }
             card.innerHTML =
-                `<div class="card mb-2"><h5 class="card-header">${period.name} ${period.temperature}&nbsp;&deg;${period.temperatureUnit}</h5><div class="card-body"><h6 class="card-title">${period.shortForecast}</h6><p class="card-text hyphenate small"><img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">${period.detailedForecast}</p></div></div>`;
+                    `<div class="card mb-2"><h5 class="card-header">${period.name} ${period.temperature}&nbsp;&deg;${period.temperatureUnit}</h5><div class="card-body"><h6 class="card-title">${period.shortForecast}</h6><p class="card-text hyphenate small"><img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">${period.detailedForecast}</p></div></div>`;
             return card;
         }
 
