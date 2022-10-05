@@ -43,7 +43,7 @@ directory, by starting it with a `$` and wrapping it in
 parentheses: `$(ROOT_DIR)`. At the time of writing, my `Makefile` looks like
 this.
 
-```makefile
+{% highlight make linenos %}
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 build:
@@ -66,7 +66,7 @@ update:
 
 newpost:
 	echo "---\nlayout: post\ntitle: title\n---" > app/_drafts/`date +%Y-%m-%d-`title_`date +%H_%M`.md
-```
+{% endhighlight %}
 
 My `Makefile` also has a handy little command to create the stub of a new blog
 post. Since I don't want to start a new post completely from scratch each time,
@@ -75,10 +75,10 @@ I add this just for a little reminder of how to post.
 Here's another fun snippet from a [laravel](https://laravel.com) project running
 in my own docker stack.
 
-```makefile
+{% highlight make linenos %}
 tinker:
 	docker compose exec php-fpm bash -c "/usr/bin/php artisan tinker"
-```
+{% endhighlight %}
 
 Once you start adding commands to your `Makefile`, the sky is the limit. Just
 remember to start all shell commands with a <strong>tab</strong>, not spaces. As
