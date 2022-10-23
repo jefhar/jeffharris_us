@@ -1,16 +1,16 @@
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 watch:
-	docker run --rm  -v "$(ROOT_DIR):/src" ruby:3.1.2-alpine3.16 sh -c 'cd /src && bundle install && bundle exec jekyll build --watch'
+	docker run --rm  -v "$(ROOT_DIR):/src" ruby:3.1.2-buster sh -c 'cd /src && bundle install && bundle exec jekyll build --watch'
 
 build:
-	docker run --rm  -v "$(ROOT_DIR):/src" ruby:3.1.2-alpine3.16 sh -c 'cd /src && bundle install && bundle exec jekyll build'
+	docker run --rm  -v "$(ROOT_DIR):/src" ruby:3.1.2-buster sh -c 'cd /src && bundle install && bundle exec jekyll build'
 
 run:
 	docker run -d -p 80:80 -v "$(ROOT_DIR)/_site:/usr/share/nginx/html" --name apache nginx:1.23.2-alpine
 
 shell:
-	docker run --rm -it -v "$(ROOT_DIR):/src" ruby:3.1.2-alpine3.16 bash
+	docker run --rm -it -v "$(ROOT_DIR):/src" ruby:3.1.2-buster bash
 
 test:
 	gitlab-runner exec docker test
