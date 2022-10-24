@@ -98,8 +98,13 @@ the nginx container and start sending web traffic to the blue stack. Then we
 pull down the green stack, and the users get the new deployment.
 
 Let's get the server configured in [part
-1](/zero-downtime/zero-downtime-deployment-1/). In [part
-2](/zero-downtime/zero-downtime-deployment-2/), we will get GitLab
-configured, and in [part 3](/zero-downtime/zero-downtime-deployment-3/) we 
+1](/zero-downtime/zero-downtime-deployment-1-server/). In [part
+2](/zero-downtime/zero-downtime-deployment-2-gitlab/), we will get GitLab
+configured, and in [part 3](/zero-downtime/zero-downtime-deployment-3-laravel/)
+we 
 will add the necessary code to the base Laravel installation and watch the 
 automatic deployment.
+
+1. [Configure the Server](/zero-downtime/2022-10-24-zero-downtime-deployment-1-server/)
+2. [Configure GitLab](/zero-downtime/2022-10-25-zero-downtime-deployment-2-gitlab/)
+3. [Add Code](/zero-downtime/2022-10-26-zero-downtime-deployment-3-laravel/)
