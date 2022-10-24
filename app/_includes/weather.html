@@ -68,7 +68,7 @@
     fetch(forecast).then((response) => {
         if (!response.ok) {
             console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + response, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
-            alert(`Unable to fetch weather from API. Server Error ${response.status}.`);
+            // alert(`Unable to fetch weather from API. Server Error ${response.status}.`);
         }
         return response;
     }).then((result) => result.json()).then((data) => {
@@ -97,7 +97,7 @@
         weatherCards = periods.slice(0, 8).map((period, index) => createCard(index, period));
     }).catch((error) => {
         console.error('%c ' + String.fromCodePoint(0x1F4A3) + ' ' + error, 'color: #f45417; font-size: 24px; background: #f7f7f7;');
-        alert('Fetching weather failed. Please try again in a few moments.');
+        // alert('Fetching weather failed. Please try again in a few moments.');
     }).finally(() => {
         weatherCards.forEach((card) => {
             weatherDom.appendChild(card);
