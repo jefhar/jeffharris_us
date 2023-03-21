@@ -2,10 +2,8 @@
 // As example you can start by importing the _variables.scss file from one of the
 // theme provided by https://bootswatch.com .
 
-
 // Some customization of the container class to have a better display in the guide.
 // Don't hesitate to remove it to have a standard Bootstrap behavior
-
 
 // formerly Minty 4.3.1
 // Bootswatch
@@ -14,109 +12,165 @@
 // Color system
 //
 @import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
-$font-family-sans-serif:      "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$headings-font-family:Lora;
 
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #f7f7f9 !default;
-$gray-300: #eceeef !default;
-$gray-400: #ced4da !default;
-$gray-500: #aaa !default;
-$gray-600: #888 !default;
-$gray-700: #5a5a5a !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
+$gray-50: #F9FAFB;
+$gray-100: #F3F4F6;
+$gray-200: #E5E7EB;
+$gray-300: #D1D5DB;
+$gray-400: #9CA3AF;
+$gray-500: #6B7280;
+$gray-600: #4B5563;
+$gray-700: #374151;
+$gray-800: #1F2937;
+$gray-900: #111827;
 
-$blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #FF7851 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #FFCE67 !default;
-$green:   #56CC9D !default;
-$teal:    #20c997 !default;
-$cyan:    #6CC3D5 !default;
+$amber-500: #F59E0B;
+$neutral-900: #171717;
+$slate-50: #F8FAFC;
+$slate-100: #F1F5F9;
+$slate-200: #E2E8F0;
+$slate-300: #CBD5E1;
+$slate-400: #94A3B8;
+$slate-500: #64748B;
+$slate-600: #475569;
+$slate-700: #334155;
+$slate-800: #1E293B;
+$slate-900: #0F172A;
+$sky-700: #0369A1;
 
-$primary:#0F4C81;
-$secondary:#F0B37E;
-$success:#065b51;
-$danger:#b82f3a;
-$info:#80a8c1;
-$warning:#a29f00;
-$light:#d6d6d6;
-$dark:#4e4e4e;
-$enable-gradients:false;
-$spacer:1.2rem;
-$border-width:3px;
-$btn-border-radius:.25rem;
-$enable-shadows:true;
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #FF0;
+$red: #FF7851;
+$orange: #fd7e14;
+$yellow: #FFCE67;
+$green: #56CC9D;
+$teal: #20c997;
+$cyan: #6CC3D5;
+$white: $gray-50;
+$black: $neutral-900;
 
-$yiq-contrasted-threshold: 250 !default;
+$primary: $slate-700;
+$secondary: $amber-500;
+$success: #065b51;
+$danger: #b82f3a;
+$info: #80a8c1;
+$warning: #a29f00;
+$light: #d6d6d6;
+$dark: #4e4e4e;
+
+$yiq-contrasted-threshold: 250;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-gradients: false;
+$enable-shadows: true;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1.2rem;
 
 $spacers: (
-  6: ($spacer * 12)
+        6: ($spacer * 12)
 );
 
 // Body
+$body-bg: $white;
+$body-color: $primary;
 
-$body-color:                $gray-600 !default;
+$code-color: $slate-500;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: $sky-700; // darken($red, 15%);
+$link-decoration: none;
+$link-hover-color: rgba($link-color, .3); // lighten($link-color, 80%);
+$link-hover-decoration: underline;
+
+$navbar-dark-color: rgba($info, .6);
+$navbar-dark-hover-color: $info;
+
+$navbar-light-color: rgba($black, .3);
+$navbar-light-hover-color: $gray-700;
+$navbar-light-active-color: $gray-700;
+$navbar-light-disabled-color: rgba($black, .1);
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-border-color: rgba(0, 0, 0, 0.05);
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$btn-border-radius: .25rem;
 
 // Components
 
-$border-radius:               .4rem !default;
-$border-radius-lg:            .6rem !default;
-$border-radius-sm:            .3rem !default;
+$border-radius: .4rem;
+$border-radius-lg: .6rem;
+$border-radius-sm: .3rem;
+$border-width: 2px;
 
-// Fonts
-
-$headings-font-family:        Lora;
-$headings-color:              $gray-700 !default;
-
-// Tables
-
-$table-border-color:          rgba(0,0,0,0.05) !default;
+$headings-font-family: Lora;
+$headings-color: $gray-700;
 
 // Dropdowns
 
-$dropdown-link-hover-color:         $white !default;
-$dropdown-link-hover-bg:            $secondary !default;
+$dropdown-link-hover-color: $white;
+$dropdown-link-hover-bg: $secondary;
 
 // Navbar
-$navbar-dark-color:                 rgba($white,.6) !default;
-$navbar-dark-hover-color:           $white !default;
+$navbar-dark-color: rgba($white, .6);
+$navbar-dark-hover-color: $white;
 
-$navbar-light-color:                rgba($black,.3) !default;
-$navbar-light-hover-color:          $gray-700 !default;
-$navbar-light-active-color:         $gray-700 !default;
-$navbar-light-disabled-color:       rgba($black,.1) !default;
+$navbar-light-color: rgba($black, .3);
+$navbar-light-hover-color: $gray-700;
+$navbar-light-active-color: $gray-700;
+$navbar-light-disabled-color: rgba($black, .1);
 
 // Pagination
 
-$pagination-color:                  $white !default;
-$pagination-bg:                     $primary !default;
-$pagination-border-color:           $primary !default;
+$pagination-color: $white;
+$pagination-bg: $primary;
+$pagination-border-color: $primary;
 
-$pagination-hover-color:            $white !default;
-$pagination-hover-bg:               $secondary !default;
-$pagination-hover-border-color:     $pagination-hover-bg !default;
+$pagination-hover-color: $white;
+$pagination-hover-bg: $secondary;
+$pagination-hover-border-color: $pagination-hover-bg;
 
-$pagination-active-bg:              $secondary !default;
-$pagination-active-border-color:    $pagination-active-bg !default;
+$pagination-active-bg: $secondary;
+$pagination-active-border-color: $pagination-active-bg;
 
-$pagination-disabled-color:         $white !default;
-$pagination-disabled-bg:            #CCE8E0 !default;
-$pagination-disabled-border-color:  $pagination-disabled-bg !default;
+$pagination-disabled-color: $white;
+$pagination-disabled-bg: #CCE8E0;
+$pagination-disabled-border-color: $pagination-disabled-bg;
 
 // Breadcrumbs
 
-$breadcrumb-bg:                     $primary !default;
-$breadcrumb-divider-color:          $white !default;
-$breadcrumb-active-color:           $breadcrumb-divider-color !default;
+$breadcrumb-bg: $primary;
+$breadcrumb-divider-color: $white;
+$breadcrumb-active-color: $breadcrumb-divider-color;
 
-
-// anchors on bg-primary block
-$link-dark-color: $info;
-$link-dark-hover-color: rgba($info, .6);
+// Card
+$card-bg: $slate-50;
+$card-border-color: $slate-200;
+$card-cap-bg: $slate-100;
