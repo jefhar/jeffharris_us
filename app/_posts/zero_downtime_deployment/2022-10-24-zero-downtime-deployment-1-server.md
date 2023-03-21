@@ -54,13 +54,14 @@ mysql and redis services. This setup will use the same services for both
 staging and production. In the future, if it's needed, services can be
 separated. Let's get them setup.
 
-Log into the deploy server as the deploy user and create a `~/potato`
+Log into the deployment server as the deployment user and create a `~/potato`
 directory for the project. Everything will live here. Enter the directory,
 and copy the [redis config](https://redis.io/docs/manual/config-file/) into
 `~/potato/redis.conf.full` and make changes as needed. Now let's get a mysql
 and redis docker images running. Create a file in the same directory, I
 called mine `daemons.sh`:
 
+{% raw %}
 ```bash
 #!/usr/bin/bash
 
@@ -104,6 +105,7 @@ docker run \
         -d \
         mysql:8.0.31
 ```
+{% endraw %}
 
 The script first strips comments from the `redis.conf.full` file and mounts
 it into the redis container. Necessary? No, but is makes searching for
