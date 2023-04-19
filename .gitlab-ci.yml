@@ -1,4 +1,4 @@
-image: ruby:3.2.1-buster
+image: ruby:3.2.2-slim
 
 variables:
   JEKYLL_ENV: production
