@@ -378,8 +378,9 @@ aside > figure > p {
     margin: .5rem;
     font-family: 'Fira Sans', sans-serif;
 }
-pre.lineno {
-    margin-top: -1em;
+
+.rouge-table > tbody > tr {
+    vertical-align: top;
 }
 
 .lineno {
