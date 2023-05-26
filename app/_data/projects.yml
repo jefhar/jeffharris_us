@@ -2,7 +2,7 @@
   description: Projects developed for the web.
   projects:
     - name: JeffHarris.us
-      description: This webpage
+      description: This webpage (Jekyll)
         <br>
         Using the power of <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://docs.gitlab.com/ee/user/project/pages/">
         GitLab Pages</a>, this page is magically updated on every push to master.
@@ -32,7 +32,7 @@
         github repo is a delayed mirror of the latest master branch with a few files anonymized to protect the warehouse.
         Try the demo at <a href="https://inventory.jeffharris.us">inventory.jeffharris.us</a>.
 
-    - name: Mass Effect Shepard Generator
+    - name: Mass Effect Shepard Generator (POP)
       description: Mass Effect, the 2007 Bioware video game, starts by asking the player to create his or her own character.
         <br>
         Sometimes, a player just needs random choices. This page pulls an data from an API and creates a page
@@ -47,12 +47,13 @@
       image: mestarter.png
       homepage: https://jefhar.gitlab.io/mestarter/
 
-    - name: Airport Shuttle (Laravel with Inertia and Vuejs)
-      description: In summer 2022, the Barbershop Harmony Society will hold their [International Convention](https://www.barbershop.org/events/international-convention)
-        in Charlotte, NC. This is a WIP to allow visitors to request a shuttle from the airport to an uptown hotel.
-      github: jefhar/bhsctl
+    - name: Singing Valentines (Laravel with Inertia and Vuejs)
+      description: A white-label service for Barbershop Harmony choruses and quartets to sell Singing Valentines. Still in progress.
+        <br>Staging environment available through the https link myvalentinesdev.xyz/c6d656a0-57ac-11ed-9b6a-0242ac120002
+      gitlab: SingingValentines/website
       icon: fab fa-laravel
       homepage: https://github.com/jefhar/bhsctl
+      image: singing-valentines.png
 
 - name: Classwork Projects
   description: Projects developed for, or inspired by a course or class that I attended.
