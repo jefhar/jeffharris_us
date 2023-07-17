@@ -47,7 +47,7 @@
       image: mestarter.png
       homepage: https://jefhar.gitlab.io/mestarter/
 
-    - name: Singing Valentines (Laravel with Inertia and Vuejs)
+    - name: Singing Valentines (Laravel with Inertia and Vue.js)
       description: A white-label service for Barbershop Harmony choruses and quartets to sell Singing Valentines. Still in progress.
         <br>Staging environment available through the https link myvalentinesdev.xyz/c6d656a0-57ac-11ed-9b6a-0242ac120002
       gitlab: SingingValentines/website
