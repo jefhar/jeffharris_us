@@ -1,5 +1,5 @@
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-IMAGE:=ruby:3.2.2-buster
+IMAGE:=ruby:3.2.2-bookworm
 
 watch:
 	docker run --rm  -v "$(ROOT_DIR):/src" $(IMAGE) sh -c 'cd /src && bundle install && bundle exec jekyll build --watch'

@@ -1,5 +1,5 @@
-# do not use a slim build. Gem installation requires extra tooling
-image: ruby:3.2.2-buster
+# Do not use a slim build. Gem installation requires extra tooling
+image: ruby:3.2.2-bookworm
 
 variables:
   JEKYLL_ENV: production
