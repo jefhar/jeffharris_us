@@ -18,4 +18,4 @@ keep adding snippets when I need them.
 I am a re-entry student attending Southern New Hampshire University, pursuing a
 Bachelor's Degree in Computer Science with an emphasis in Software Engineering.
 
-Projected graduation in June 2021.
+Currently on pause while finding new employment; six terms remaining.
