@@ -27,15 +27,18 @@
       gitlab: jefhar/inventory
       icon: fab fa-php
       homepage: https://inventory.jeffharris.us
-      description: <em>Inventory</em> is a project for a local IT remarketer that stopped contact during the pandemic.
+      description: <em>Inventory</em> is a project for a local IT re-marketer that stopped contact during the pandemic.
         This allows a business to keep track of consignment inventory as it enters the warehouse and sales. The
-        github repo is a delayed mirror of the latest master branch with a few files anonymized to protect the warehouse.
+        github repo is a mirror of the latest master branch with a few files anonymized to protect the warehouse.
         Try the demo at <a href="https://inventory.jeffharris.us">inventory.jeffharris.us</a>.
-        <details>
-        <summary>Login Details</summary>
+        <details><summary>Login Details</summary>
         Use password <code>password</code> and login as <code>superadmin@example.com</code>,
         <code>owner@example.com</code>, <code>salesrep@example.com</code>, <code>technician@example.com</code>, or
         <code>employee@example.com</code> to log in as the respective role.</details>
+        <details><summary>Disclosure</summary>
+        Over time, I have three different local repositories that all have the same <code>git log</code> and
+        <code>git remote</code>, but are in seemingly different states and have a different <code>/app</code> structure.
+        </details>
 
     - name: Mass Effect Shepard Generator (POP)
       description: Mass Effect, the 2007 Bioware video game, starts by asking the player to create his or her own character.
