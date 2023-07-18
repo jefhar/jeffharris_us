@@ -10,17 +10,17 @@
       icon: fas fa-home
       homepage: https://gitlab.com/jefhar/jefhar.gitlab.io
 
-    - name: Domain Oriented Laravel (Archived; out of date)
-      description: Domain oriented Laravel is a fork of the <a href="https://www.laravel.com">Laravel Framework</a>
-        <br>
-        Using the <a href="https://stitcher.io/blog/laravel-beyond-crud-01-domain-oriented-laravel">excellent posts</a>
-        by Brent as a guide, this is a one-step package to install Laravel and make changes necessary to have an
-        opinionated separate domain area from that of the Laravel Framework. Also included is a <a href="https://www.docker.com">docker
-        </a> environment and commonly used tools.
-        <br>`composer create-project jefhar/laravel-domain-oriented blog`
-      github: jefhar/laravel-domain-oriented
-      icon: fab fa-php
-      homepage: https://github.com/jefhar/laravel-domain-oriented
+    - name: Singing Valentines (Laravel with Inertia and Vue.js)
+      description: <p>A white-label service for Barbershop Harmony choruses and quartets to sell Singing Valentines.
+        Still in progress; private GitLab repository.<p>
+        <p>Upon each push to the Master git branch, GitLab's CI/CD runner pushes a new docker stack, alternating
+        blue/green deployments for zero-downtime deployment.</p>
+        <p>Staging environment available through the link below.</p>
+      gitlab:
+      icon: fab fa-laravel
+      homepage: https://myvalentinesdev.xyz/c6d656a0-57ac-11ed-9b6a-0242ac120002
+      image: singing-valentines.png
+
 
     - name: Inventory System (Laravel with React)
       date: February 26, 2020
@@ -31,6 +31,11 @@
         This allows a business to keep track of consignment inventory as it enters the warehouse and sales. The
         github repo is a delayed mirror of the latest master branch with a few files anonymized to protect the warehouse.
         Try the demo at <a href="https://inventory.jeffharris.us">inventory.jeffharris.us</a>.
+        <details>
+        <summary>Login Details</summary>
+        Use password <code>password</code> and login as <code>superadmin@example.com</code>,
+        <code>owner@example.com</code>, <code>salesrep@example.com</code>, <code>technician@example.com</code>, or
+        <code>employee@example.com</code> to log in as the respective role.</details>
 
     - name: Mass Effect Shepard Generator (POP)
       description: Mass Effect, the 2007 Bioware video game, starts by asking the player to create his or her own character.
@@ -47,13 +52,17 @@
       image: mestarter.png
       homepage: https://jefhar.gitlab.io/mestarter/
 
-    - name: Singing Valentines (Laravel with Inertia and Vue.js)
-      description: A white-label service for Barbershop Harmony choruses and quartets to sell Singing Valentines. Still in progress.
-        <br>Staging environment available through the https link myvalentinesdev.xyz/c6d656a0-57ac-11ed-9b6a-0242ac120002
-      gitlab: SingingValentines/website
-      icon: fab fa-laravel
-      homepage: https://github.com/jefhar/bhsctl
-      image: singing-valentines.png
+    - name: Domain Oriented Laravel (Archived; out of date)
+      description: Domain oriented Laravel is a fork of the <a href="https://www.laravel.com">Laravel Framework</a>
+        <br>
+        Using the <a href="https://stitcher.io/blog/laravel-beyond-crud-01-domain-oriented-laravel">excellent posts</a>
+        by Brent as a guide, this is a one-step package to install Laravel and make changes necessary to have an
+        opinionated separate domain area from that of the Laravel Framework. Also included is a <a href="https://www.docker.com">docker
+        </a> environment and commonly used tools.
+        <br>`composer create-project jefhar/laravel-domain-oriented blog`
+      github: jefhar/laravel-domain-oriented
+      icon: fab fa-php
+      homepage: https://github.com/jefhar/laravel-domain-oriented
 
 - name: Classwork Projects
   description: Projects developed for, or inspired by a course or class that I attended.
