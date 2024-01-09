@@ -83,7 +83,10 @@
 {%- include google_analytics.html -%}
 {%- endif -%}
 
-{%- include weather.html -%}
+<script>
+{%- include weather.js -%}
+</script>
+
 
 {%- if page.id -%}
 {%- include utterance.html -%}
