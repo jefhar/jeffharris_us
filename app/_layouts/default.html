@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-  {%- include head.html -%}
+    {%- include head.html -%}
 
-  <body class="pb-6">
+    <body class="pb-6">
 
     {%- include header.html -%}
 
+    <div id="weatherAlertHeader" class="invisible alert alert-danger w-50 mx-auto shadow-sm">
+        <p class="text-center font-weight-bold mx-auto">Weather Alerts <a href="#weatherAlerts" class="alert-link">have been issued</a> by the National Weather Service for the Charlotte, NC area.</p>
+    </div>
+
     <div class="py-5">
-      <div class="container page-content">
-          {{ content }}
-      </div>
+        <div class="container page-content">
+            {{ content }}
+        </div>
     </div>
 
     <div class="pb-5">
@@ -21,6 +25,6 @@
 
     {%- include footer.html -%}
 
-  </body>
+    </body>
 
 </html>

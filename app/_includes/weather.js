@@ -9,6 +9,14 @@ const weatherAlertCards = [];
 const weatherCards = [];
 const alertRequest = new Request(weatherAlertAPIUrl, apiOptions);
 const request = new Request(weatherAPIUrl, apiOptions);
+const severityMap = {
+  // extreme, severe, moderate, minor, unknown
+  'extreme': 'danger',
+  'severe': 'danger',
+  'moderate': 'warning',
+  'minor': 'info',
+  'unknown': 'warning',
+};
 fetch(alertRequest)
   .then((result) => result.json())
   .then((data) => {
@@ -19,7 +27,7 @@ fetch(alertRequest)
 
     return features.map((feature) => ({
       description: feature.properties.description,
-      effective: feature.properties.effective,
+      effective: new Date(feature.properties.effective),
       expires: new Date(feature.properties.expires),
       headline: feature.properties.headline,
       severity: feature.properties.severity,
@@ -30,12 +38,30 @@ fetch(alertRequest)
     if (!alerts.length) {
       return;
     }
+    alerts.sort(function (a, b) {
+      const aSev = a.severity.toLowerCase();
+      const bSev = b.severity.toLowerCase();
+      if (aSev === bSev) {
+        return a.expires.valueOf() - b.expires.valueOf();
+      }
+
+      const severityComparison = {
+        extreme: 1,
+        severe: 2,
+        moderate: 3,
+        minor: 4,
+        unknown: 5,
+      };
+      return severityComparison[aSev] - severityComparison[bSev];
+    });
+
     const alertCards = alerts.map((alert) => {
       const card = document.createElement('div');
-      card.classList.add('card', 'text-white', 'bg-danger', 'mb-3', 'mx-2', 'border', 'border-danger');
+      card.classList.add('card', 'text-white', 'mb-3', 'mx-2', 'shadow', 'border', `border-${severityMap[alert.severity.toLowerCase()]}`, `bg-${severityMap[alert.severity.toLowerCase()]}`);
 
       const cardHeader = document.createElement('div');
-      cardHeader.classList.add('card-header', 'bg-danger');
+      cardHeader.classList.add('card-header');
+      cardHeader.classList.add(`bg-${severityMap[alert.severity.toLowerCase()]}`);
       cardHeader.innerHTML = `<h4>${alert.headline}</h4>`;
       card.appendChild(cardHeader);
 
@@ -44,7 +70,7 @@ fetch(alertRequest)
 
       const cardTitle = document.createElement('div');
       cardTitle.classList.add('card-title');
-      cardTitle.innerText = `${alert.severity} from: ${alert.effective.toLocaleString()} to ${alert.expires.toLocaleString()}`
+      cardTitle.innerHTML = `<h5>${alert.severity} from: ${alert.effective.toLocaleString()} to ${alert.expires.toLocaleString()}</h5>`;
 
       const cardText = document.createElement('p');
       cardText.classList.add('card-text');
@@ -63,6 +89,7 @@ fetch(alertRequest)
     });
 
     document.getElementById('weatherAlerts').classList.replace('invisible', 'visible');
+    document.getElementById('weatherAlertHeader').classList.replace('invisible', 'visible');
   });
 
 fetch(request).then((response) => {
