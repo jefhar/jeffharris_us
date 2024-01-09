@@ -13,6 +13,9 @@ run:
 shell:
 	docker run --rm -it -v "$(ROOT_DIR):/src" $(IMAGE) bash
 
+serve:
+	docker run --rm -p 4000:4000 -v "$(ROOT_DIR):/src" ruby:latest sh -c 'cd /src && bundle install && bundle exec jekyll serve --host 0.0.0.0'
+
 test:
 	gitlab-runner exec docker test
 
