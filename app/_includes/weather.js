@@ -32,16 +32,28 @@ fetch(alertRequest)
     }
     const alertCards = alerts.map((alert) => {
       const card = document.createElement('div');
-      card.classList.add('card', 'text-white', 'bg-danger', 'mb-3', 'mx-2');
+      card.classList.add('card', 'text-white', 'bg-danger', 'mb-3', 'mx-2', 'border', 'border-danger');
 
       const cardHeader = document.createElement('div');
-      cardHeader.classList.add('card-header');
+      cardHeader.classList.add('card-header', 'bg-danger');
       cardHeader.innerHTML = `<h4>${alert.headline}</h4>`;
       card.appendChild(cardHeader);
 
       const cardBody = document.createElement('div');
       cardBody.classList.add('card-body');
-      cardBody.innerHTML = `<h4>${alert.severity} from: ${alert.effective.toLocaleString()} to ${alert.expires.toLocaleString()}</h4><p>${alert.description.replaceAll('*', '<br />*')}</p>`;
+
+      const cardTitle = document.createElement('div');
+      cardTitle.classList.add('card-title');
+      cardTitle.innerText = `${alert.severity} from: ${alert.effective.toLocaleString()} to ${alert.expires.toLocaleString()}`
+
+      const cardText = document.createElement('p');
+      cardText.classList.add('card-text');
+      cardText.innerHTML = `${alert.description.replaceAll('*', '<br />*')}`;
+
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(cardText);
+
+      card.appendChild(cardHeader);
       card.appendChild(cardBody);
 
       return card;
