@@ -34,7 +34,7 @@ endif
 # set target color
 TARGET_COLOR := $(BLUE)
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-IMAGE:=ruby:3.2.2-bookworm
+IMAGE:=ruby:3.3.3-bookworm
 
 watch: ## Watch for updates and automatically rebuild
 	docker run --rm  -v "$(ROOT_DIR):/src" $(IMAGE) sh -c 'cd /src && bundle install && bundle exec jekyll build --watch'
@@ -49,7 +49,7 @@ shell: ## Drop into a shell in the ruby environment
 	docker run --rm -it -v "$(ROOT_DIR):/src" $(IMAGE) bash
 
 serve: ## Serve from ruby
-	docker run --rm -p 4000:4000 -v "$(ROOT_DIR):/src" ruby:latest sh -c 'cd /src && bundle install && bundle exec jekyll serve --host 0.0.0.0'
+	docker run --rm -p 4000:4000 -v "$(ROOT_DIR):/src" $(IMAGE) sh -c 'cd /src && bundle install && bundle exec jekyll serve --host 0.0.0.0'
 
 test: ## Run tests
 	gitlab-runner exec docker test
