@@ -54,10 +54,10 @@ serve: ## Serve from ruby
 test: ## Run tests
 	gitlab-runner exec docker test
 
-updategem: ## Update gemfile
+updategem: ## Update dependencies
 	docker run --rm -v $(ROOT_DIR):/usr/src/app -w /usr/src/app $(IMAGE) bundle lock --update
 
-update: ## Update everything
+update: ## Update Ruby version
 	docker run --rm -v "$(ROOT_DIR):/src" $(IMAGE) sh -c "cd /src/ && bundle config set path 'vendor/bundle' && bundle lock"
 
 newpost: ## Create a new draft post file
