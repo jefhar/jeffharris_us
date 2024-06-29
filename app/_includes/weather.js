@@ -100,8 +100,8 @@ fetch(request).then((response) => {
 })
   .then((result) => result.json())
   .then((data) => {
-    const {periods, updated} = data.properties;
-    const date = new Date(updated);
+    const {periods, updateTime} = data.properties;
+    const date = new Date(updateTime);
     document.getElementById('weatherUpdated').innerText = `Updated at ${date.toLocaleString()}`;
     for (let i = 0; i < 8; ++i) {
       const period = periods[i];
