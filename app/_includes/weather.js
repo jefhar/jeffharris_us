@@ -119,7 +119,7 @@ fetch(request).then((response) => {
   <div class="card-body">
     <h6 class="card-title">${period.shortForecast}</h6>
     <p class="card-text hyphenate small">
-<img class="float-left weather-icon rounded mr-2" src="https://api.weather.gov/${period.icon}" alt="${period.shortForecast}">
+<img class="float-left weather-icon rounded mr-2" src="${period.icon}" alt="${period.shortForecast}">
 ${period.detailedForecast}</p>
   </div>
 </div>`;
@@ -128,6 +128,7 @@ ${period.detailedForecast}</p>
   })
   .catch((error) => {
     alert('Fetching weather failed. Please try again in a few moments.');
+    console.info(error);
   })
   .finally(() => {
     weatherCards.forEach(card => {
