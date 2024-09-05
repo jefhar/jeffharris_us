@@ -5,7 +5,7 @@ tags:
     - DNS
     - Bind
     - named
-Category: "Fixing the Broke"
+category: "Fixing the Broke"
 ---
 
 In my multi-tenant side project, I have a plan to allow my providers to
@@ -120,7 +120,7 @@ Starting BIND 9.18.12-0ubuntu0.22.04.1-Ubuntu, running on my server, built
 with this, these algorithms, and boom:
 
 ```log
-Apr 26 12:41:43 dns named[73708]: /etc/bind/named.conf.options:62: 
+Apr 26 12:41:43 dns named[73708]: /etc/bind/named.conf.options:62:
 'inline-signing yes;' must also be configured explicitly for zones using dnssec-policy without a configured 'allow-update' or 'update-policy'. See https://kb.isc.org/docs/dnssec-policy-requires-dynamic-dns-or-inline-signing
 Apr 26 12:41:43 dns named[73708]: message repeated 19 times: [ /etc/bind/named.conf.options:62: 'inline-signing yes;' must also be configured explicitly for zones using dnssec-policy without a configured 'allow-update' or 'update-policy'. See https://kb.isc.org/docs/dnssec-policy-requires-dynamic-dns-or-inline-signing]
 ```
@@ -128,17 +128,17 @@ Apr 26 12:41:43 dns named[73708]: message repeated 19 times: [ /etc/bind/named.c
 Now there we
 go. [The fine doc page](https://kb.isc.org/docs/dnssec-policy-requires-dynamic-dns-or-inline-signing)
 says "all that you need to do is to add an additional option to the
-configuration of each zone that is logging the error message." That sounds 
+configuration of each zone that is logging the error message." That sounds
 simple enough, except it doesn't say which zones are logging the error message.
 
-The message was repeated 19 times. I have 18 zones in my `named.conf.local` 
+The message was repeated 19 times. I have 18 zones in my `named.conf.local`
 file, two of which are set for dynamic updates. Then there are the four
-pre-defined zones in `named.conf.default-zones`. If I have 18 zones, two of 
-which don't throw an error, and the other four zones which are throwing an 
+pre-defined zones in `named.conf.default-zones`. If I have 18 zones, two of
+which don't throw an error, and the other four zones which are throwing an
 error, that is 20 error messages: the first one and the repeated 19 times.
 
-That tells me that one of my zones that is set for dnssec without updates 
-needs the `inline-signing yes;` option. I'll test by adding it to one zone 
+That tells me that one of my zones that is set for dnssec without updates
+needs the `inline-signing yes;` option. I'll test by adding it to one zone
 and restart.
 
 ```log
@@ -146,15 +146,15 @@ Apr 26 13:12:31 dns named[76795]: /etc/bind/named.conf.options:62: 'inline-signi
 Apr 26 13:12:31 dns named[76795]: message repeated 18 times: [ /etc/bind/named.conf.options:62: 'inline-signing yes;' must also be configured explicitly for zones using dnssec-policy without a configured 'allow-update'
 ```
 
-Error repeated 18 times. It looks like my hypothesis works, but now the 
-question is "since I'm adding a `dnssec-policy` globally, can I add 
+Error repeated 18 times. It looks like my hypothesis works, but now the
+question is "since I'm adding a `dnssec-policy` globally, can I add
 `inline-signing` globally also?". I add it to the
 `options{inline-signing yes; }`, and I get &lt;sadTuba.mp3>
 ```log
 Apr 26 13:14:07 dns named[76872]: /etc/bind/named.conf.options:63: unknown option 'inline-signing'
 ```
-How about adding it to my dnssec-policy? Nope, doesn't like that, either. 
-It's just another thing to add to each and every zone. Restart `named` and 
+How about adding it to my dnssec-policy? Nope, doesn't like that, either.
+It's just another thing to add to each and every zone. Restart `named` and
 it's working!
 
 ```bash
@@ -167,5 +167,5 @@ configuration file: /etc/bind/named.conf
 ...
 ```
 
-So there I go. An error that was silently ignored now causes complete 
+So there I go. An error that was silently ignored now causes complete
 failure and requires you to fix it, and now it's working fine.
