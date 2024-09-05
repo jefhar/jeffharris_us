@@ -7,7 +7,7 @@
 
 // Variables ===================================================================
 
-$web-font-path: "https://fonts.bunny.net/css?family=fira-sans:400|lora:400,700|noto-sans:400" !default;
+$web-font-path: "https://fonts.bunny.net/css?family=petrona:400,700|jetbrains-mono:400,700|inter:400" !default;
 @import url($web-font-path);
 
 // Navbar ======================================================================
@@ -402,4 +402,8 @@ aside > figure > p {
     h1, h2, h3, h4, h5, h6 {
         margin-top: 1.5rem;
     }
+}
+
+.slider {
+  line-height: 1.4;
 }
