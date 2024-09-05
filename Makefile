@@ -37,7 +37,7 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 IMAGE:=ruby:3.3.4-bookworm
 
 watch: ## Watch for updates and automatically rebuild
-	docker run --rm  -v "$(ROOT_DIR):/src" $(IMAGE) sh -c 'cd /src && bundle install && bundle exec jekyll build --watch'
+	docker run --rm  -p 35729:35729 -p 4000:4000 -v "$(ROOT_DIR):/src" $(IMAGE) sh -c 'cd /src && bundle install && bundle exec jekyll serve --livereload --host 0.0.0.0'
 
 build: ## Build for production
 	docker run --rm  -v "$(ROOT_DIR):/src" $(IMAGE) sh -c 'cd /src && bundle install && bundle exec jekyll build'

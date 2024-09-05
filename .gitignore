@@ -1,9 +1,9 @@
-_site
-.sass-cache
+.idea/
+.jekyll-cache
 .jekyll-metadata
+.sass-cache
+_site
+app/.jekyll-cache
 public/
 test/
-.idea/
 vendor/
-.jekyll-cache
-app/.jekyll-cache
