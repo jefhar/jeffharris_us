@@ -6,7 +6,7 @@ title: Tags
 {%- assign tags = site.tags | sort -%}
 <nav>
     {% for tag in tags %}
-    <a class="btn btn-light" href="#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
+    <a class="btn btn-light" style="padding: 0.25rem 0.5rem; margin-bottom: 6px;" href="#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
     {%- endfor -%}
 </nav>
 <div class="mt-5"></div>
